@@ -510,6 +510,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	font-size: 11px;
 }
 
+.leaflet-bottom .leaflet-control-scale {
+	margin-bottom: 10px;
+}
+
 .leaflet-control-scale-line {
 	border: 2px solid #777;
 	border-top: none;
