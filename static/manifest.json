@@ -6,7 +6,7 @@
   "orientation": "any",
   "scope": "/",
   "short_name": "McKenzie Map",
-  "start_url": "/",
+  "start_url": "/mckenzie-map",
   "theme_color": "#ffffff",
   "id": "mckenzie-map-pwa",
   "description": "Searchable map of McKenzie county ND",
