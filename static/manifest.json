@@ -13,7 +13,7 @@
   "lang": "en",
   "icons": [
     {
-      "src": "/map.png",
+      "src": "map.png",
       "sizes": "512x512"
     }
   ]
