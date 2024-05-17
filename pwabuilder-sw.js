@@ -1,18 +1,30 @@
-// This is the "Offline copy of pages" service worker
+// Define the cache name
+const CACHE_NAME = 'local-cache';
 
-const CACHE = "pwabuilder-offline";
+// List of URLs to cache
+const urlsToCache = [
+    RegExp("/*")
+];
 
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
-
-self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
-    self.skipWaiting();
-  }
+// Install event
+self.addEventListener('install', event => {
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(cache => {
+                // Cache all URLs
+                return cache.addAll(urlsToCache);
+            })
+            .then(() => self.skipWaiting())
+    );
 });
 
-workbox.routing.registerRoute(
-  new RegExp('/*'),
-  new workbox.strategies.StaleWhileRevalidate({
-    cacheName: CACHE
-  })
-);
+// Fetch event
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.match(event.request)
+            .then(response => {
+                // Cache first strategy
+                return response || fetch(event.request);
+            })
+    );
+});
