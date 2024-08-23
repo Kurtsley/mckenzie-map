@@ -374,7 +374,7 @@
     </script>
     <script>
       if (typeof navigator.serviceWorker !== "undefined") {
-        navigator.serviceWorker.register("/static/pwabuilder-sw.js");
+        navigator.serviceWorker.register("{{ url_for('static', filename='pwabuilder-sw.js') }}");
       }
     </script>
   </body>
